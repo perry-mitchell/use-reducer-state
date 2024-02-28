@@ -8,12 +8,23 @@
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "rimraf dist",
+    "format": "prettier --write \"{source,test}/**/*.{js,ts}\"",
+    "pre:commit": "lint-staged",
     "prepublishOnly": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run test:format",
+    "test:format": "prettier --check \"{source,test}/**/*.{js,ts}\""
   },
   "files": [
     "dist/**/*"
   ],
+  "lint-staged": {
+    "{source,test}/**/*.{js,ts}": [
+      "prettier --write"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npm run pre:commit"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/perry-mitchell/use-reducer-state.git"
@@ -33,8 +44,11 @@
   "devDependencies": {
     "@types/node": "^20.11.21",
     "@types/react": "^18.2.60",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
     "react": "^18.2.0",
     "rimraf": "^5.0.5",
+    "simple-git-hooks": "^2.9.0",
     "typescript": "^5.3.3"
   }
 }
