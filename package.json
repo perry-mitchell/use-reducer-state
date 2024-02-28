@@ -13,7 +13,8 @@
     "prepare": "simple-git-hooks",
     "prepublishOnly": "npm run build",
     "test:format": "prettier --check \"{source,test}/**/*.{js,ts}\"",
-    "test": "npm run test:format"
+    "test:specs": "mocha --require global-jsdom/register --require @testing-library/react/dont-cleanup-after-each 'test/specs/**/*.spec.js'",
+    "test": "npm run test:specs && npm run test:format"
   },
   "files": [
     "dist/**/*"
@@ -43,9 +44,14 @@
   },
   "homepage": "https://github.com/perry-mitchell/use-reducer-state#readme",
   "devDependencies": {
+    "@testing-library/react": "^14.2.1",
     "@types/node": "^20.11.21",
-    "@types/react": "^18.2.60",
+    "@types/react": "^17.0.76",
+    "chai": "^5.1.0",
+    "global-jsdom": "^24.0.0",
+    "jsdom": "^24.0.0",
     "lint-staged": "^15.2.2",
+    "mocha": "^10.3.0",
     "prettier": "^3.2.5",
     "react": "^18.2.0",
     "rimraf": "^5.0.5",
