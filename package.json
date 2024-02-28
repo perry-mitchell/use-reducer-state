@@ -1,6 +1,6 @@
 {
   "name": "use-reducer-state",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "React useReducer with state getter",
   "exports": "./dist/index.js",
   "type": "module",
