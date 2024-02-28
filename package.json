@@ -2,10 +2,18 @@
   "name": "use-reducer-state",
   "version": "0.0.0",
   "description": "React useReducer with state getter",
-  "main": "dist/index.js",
+  "exports": "./dist/index.js",
+  "type": "module",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "dist/**/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/perry-mitchell/use-reducer-state.git"
@@ -26,6 +34,7 @@
     "@types/node": "^20.11.21",
     "@types/react": "^18.2.60",
     "react": "^18.2.0",
+    "rimraf": "^5.0.5",
     "typescript": "^5.3.3"
   }
 }
